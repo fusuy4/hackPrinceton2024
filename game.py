@@ -1,6 +1,8 @@
 import random
 import pygame
 import pygame.freetype
+import time
+
 
 pygame.init()  # initializer, checks the installation
 
@@ -36,22 +38,23 @@ class FallingObjects:
 
 # individual Falling Objects, using hand-drawn images
 plasticBottle = FallingObjects("images/plasticbottle.png", 2, (300, 125), True)
-chipBag = FallingObjects("images/chipbag.png", 2, (300, 125), True)
-cigarette = FallingObjects("images/cigarette.png", 2, (300, 125), False) #not recycle
+chipBag = FallingObjects("images/chipbag.png", 2, (300, 125), False)
+cigarette = FallingObjects("images/cigarette.png", 2, (300, 125), False) # not recycle
 plasticBag = FallingObjects("images/plasticbag.png", 2, (300, 125), False )
 bananaPeel = FallingObjects("images/bananapeel.png", 2, (300, 125), False)
 can = FallingObjects("images/can.png", 2, (300, 125), True)
 
 # canvas/background of homescreen
-canvas = pygame.display.set_mode((800, 800))
-background = pygame.image.load("images/titlescreen.jpeg")
+canvas = pygame.display.set_mode((800, 733))
+background = pygame.image.load("images/background.jpg")
+homepage = pygame.image.load("images/titlescreen.jpeg")
+homepage_rect = homepage.get_rect()
 
 # score counter
 score = 0
 score_change = 10
 
 # Running game
-runningscreen = True
 running = True
 
 # list to randomize what trash object falls from sky
@@ -62,34 +65,29 @@ fallingtrash = list[int (random.uniform(0, 6))]
 fallingtrash.randomSpeed()
 fallingtrash.randomPosition()
 
+# menu screen - current bug
 
-# menu screen
-def menu() :
-    pygame.display.set_caption("Menu")
-    while runningscreen : 
-         canvas.blit(background, 0, 0)
-             
-         menu_text = font.render(menu_text, True, (0, 0, 0))
-         canvas.blit(menu_text, (10, 10))
-         
-         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                runningscreen = False
+#t_end = time.time() + 5
+# while time.time() < t_end:
+#     pygame.display.set_caption("Menu")
+#     canvas.blit(homepage, (0,0))
+#     pygame.display.update()
+#     print('hi')
 
 # the game utilizes a while loop to continously update the positions of 
 # the objects on screen, both those controlled by player and not controlled
 # by player   
-def play() :
-    # title of game window
-    pygame.display.set_caption("Play")
+
 
 while running:
-
-    canvas.fill(white)
     
+    pygame.display.set_caption("Play")
+    
+    canvas.blit(background, (0,0))
+
     # creates time delay 
     pygame.time.delay(10)
-
+    
     # checks if recyclable trash is collected
     if pygame.Rect.colliderect(recyclebin_rect, fallingtrash.rect) and fallingtrash.recycleable == True:
         score = score + score_change
