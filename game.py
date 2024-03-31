@@ -35,7 +35,7 @@ class FallingObjects:
         self.position = random.uniform(0, 800)
 
 # individual Falling Objects, using hand-drawn images
-plasticBottle = FallingObjects("images/can.png", 2, (300, 125), True)
+plasticBottle = FallingObjects("images/plasticbottle.png", 2, (300, 125), True)
 chipBag = FallingObjects("images/chipbag.png", 2, (300, 125), True)
 cigarette = FallingObjects("images/cigarette.png", 2, (300, 125), False) #not recycle
 plasticBag = FallingObjects("images/plasticbag.png", 2, (300, 125), False )
@@ -44,7 +44,7 @@ can = FallingObjects("images/can.png", 2, (300, 125), True)
 
 # canvas/background of homescreen
 canvas = pygame.display.set_mode((800, 800))
-background = pygame.image.load("background.jpeg")
+background = pygame.image.load("images/titlescreen.jpeg")
 
 # score counter
 score = 0
