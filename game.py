@@ -9,10 +9,10 @@ white = (255, 255, 255)
 black = (0, 0, 0) 
 
 # initializes font
-font = pygame.font.Font('pythonprac/opensans.ttf', 40)
+font = pygame.font.Font('opensans.ttf', 40)
 
 # recyclebin object
-recyclebin = pygame.image.load("pythonprac/images/recyclebin.png")
+recyclebin = pygame.image.load('images/recyclebin.png')
 recyclebin_rect = recyclebin.get_rect()
 vel = 3
 recyclebin_rect.bottom = 800
@@ -44,11 +44,9 @@ can = FallingObjects("images/can.png", 2, (300, 125), True)
 
 # canvas/background of homescreen
 canvas = pygame.display.set_mode((800, 800))
-background = pygame.image.load("pythonprac/greenbackground.jpeg")
+background = pygame.image.load("background.jpeg")
 
-# title of game window
-pygame.display.set_caption("Show Image")
-
+# score counter
 score = 0
 score_change = 10
 
